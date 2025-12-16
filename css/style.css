@@ -1,0 +1,6 @@
+body { font-family: Arial; background:#f4f4f4; }
+header { background:#111; color:#fff; padding:15px; }
+nav a { color:white; margin-right:10px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:15px; padding:20px; }
+.card { background:white; padding:15px; border-radius:8px; }
+button { background:#007bff; color:white; border:none; padding:8px; }
