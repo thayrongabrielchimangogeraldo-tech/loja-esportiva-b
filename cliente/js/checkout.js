@@ -1,21 +1,29 @@
-const lista = document.getElementById('lista');
-const totalP = document.getElementById('total');
-
 const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-let total = 0;
-lista.innerHTML = '';
+const lista = document.getElementById('lista');
+const totalEl = document.getElementById('total');
 
-carrinho.forEach(p => {
-  const li = document.createElement('li');
-  li.textContent = `${p.nome} - R$ ${Number(p.preco).toFixed(2)}`;
-  lista.appendChild(li);
-  total += Number(p.preco);
-});
+function render() {
+  lista.innerHTML = "";
+  let total = 0;
 
-totalP.textContent = `Total: R$ ${total.toFixed(2)}`;
+  carrinho.forEach((item) => {
+    const preco = Number(item.preco) || 0;
+    total += preco;
+
+    const li = document.createElement("li");
+    li.textContent = `${item.nome} - R$ ${preco.toFixed(2)}`;
+    lista.appendChild(li);
+  });
+
+  totalEl.textContent = `Total: R$ ${total.toFixed(2)}`;
+}
 
 function finalizar() {
-  localStorage.removeItem('carrinho');
-  alert('Compra finalizada com sucesso!');
+  // aqui tu pode salvar no Supabase depois, se teu professor pedir
+  localStorage.removeItem("carrinho");
+  alert("Compra finalizada com sucesso!");
+  window.location.href = "./index.html";
 }
+
+render();
